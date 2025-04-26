@@ -1,5 +1,6 @@
+
 import React from "react";
-import { Rocket } from "lucide-react";
+import { LayoutGrid } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -41,36 +42,40 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -z-10 inset-0 bg-gradient-to-tr from-secondary/40 via-primary/30 to-accent/20 rounded-full blur-3xl" />
               
-              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-accent/10 transform hover:scale-105 transition-transform duration-300">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/80 p-4 rounded-xl shadow-sm border border-accent/10">
-                    <Rocket className="text-accent mb-2 h-8 w-8" />
-                    <h3 className="font-poppins font-semibold text-lg text-textColor">Quick Recovery</h3>
-                    <p className="text-textColor-secondary text-sm">Personalized treatment plans</p>
-                  </div>
-                  
-                  <div className="bg-white/80 p-4 rounded-xl shadow-sm border border-accent/10 transform translate-y-4">
-                    <div className="h-2 w-16 bg-accent rounded-full mb-2" />
-                    <h3 className="font-poppins font-semibold text-lg text-textColor">Expert Care</h3>
-                    <p className="text-textColor-secondary text-sm">Professional therapists</p>
-                  </div>
-                  
-                  <div className="bg-white/80 p-4 rounded-xl shadow-sm border border-accent/10 transform -translate-y-4">
-                    <div className="h-8 w-8 rounded-full bg-accent/20 flex items-center justify-center mb-2">
-                      <div className="h-4 w-4 rounded-full bg-accent" />
+              <div className="bg-white/50 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-accent/10">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-6 p-4 bg-white/80 rounded-2xl border border-accent/10 hover:shadow-md transition-all">
+                    <div className="flex-shrink-0">
+                      <LayoutGrid className="h-10 w-10 text-accent" />
                     </div>
-                    <h3 className="font-poppins font-semibold text-lg text-textColor">Modern Methods</h3>
-                    <p className="text-textColor-secondary text-sm">Latest techniques</p>
-                  </div>
-                  
-                  <div className="bg-white/80 p-4 rounded-xl shadow-sm border border-accent/10">
-                    <div className="flex gap-1 mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="h-2 w-2 rounded-full bg-accent" />
-                      ))}
+                    <div>
+                      <h3 className="font-poppins font-semibold text-lg text-textColor">Comprehensive Care</h3>
+                      <p className="text-textColor-secondary">Personalized treatment plans tailored to your needs</p>
                     </div>
-                    <h3 className="font-poppins font-semibold text-lg text-textColor">Proven Results</h3>
-                    <p className="text-textColor-secondary text-sm">High success rate</p>
+                  </div>
+
+                  <div className="flex items-center gap-6 p-4 bg-white/80 rounded-2xl border border-accent/10 hover:shadow-md transition-all">
+                    <div className="flex-shrink-0 h-10 w-10 bg-accent/10 rounded-full flex items-center justify-center">
+                      <div className="h-5 w-5 bg-accent rounded-full" />
+                    </div>
+                    <div>
+                      <h3 className="font-poppins font-semibold text-lg text-textColor">Expert Therapists</h3>
+                      <p className="text-textColor-secondary">Highly qualified professionals at your service</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-6 p-4 bg-white/80 rounded-2xl border border-accent/10 hover:shadow-md transition-all">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 space-y-1.5">
+                        <div className="h-1.5 w-full bg-accent rounded-full" />
+                        <div className="h-1.5 w-3/4 bg-accent rounded-full" />
+                        <div className="h-1.5 w-1/2 bg-accent rounded-full" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-poppins font-semibold text-lg text-textColor">Proven Results</h3>
+                      <p className="text-textColor-secondary">High success rate with lasting outcomes</p>
+                    </div>
                   </div>
                 </div>
               </div>
