@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "./ui/button";
 import { Users, Award, CheckCircle } from "lucide-react";
@@ -83,7 +84,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-16">
           <div 
             ref={happyPatientsCounter.ref}
-            className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300"
+            className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
           >
             <Users className="w-12 h-12 text-accent mb-4" />
             <h3 className="text-2xl font-bold text-textColor mb-2">
@@ -93,7 +94,7 @@ const About = () => {
           </div>
           <div 
             ref={experienceCounter.ref}
-            className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300"
+            className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
           >
             <Award className="w-12 h-12 text-accent mb-4" />
             <h3 className="text-2xl font-bold text-textColor mb-2">
@@ -103,7 +104,7 @@ const About = () => {
           </div>
           <div 
             ref={successRateCounter.ref}
-            className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300"
+            className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
           >
             <CheckCircle className="w-12 h-12 text-accent mb-4" />
             <h3 className="text-2xl font-bold text-textColor mb-2">
@@ -114,11 +115,11 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <div className="bg-white p-8 rounded-xl shadow-lg">
             <h3 className="text-2xl md:text-3xl font-poppins font-medium text-textColor">
               Expert Care You Can Trust
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4 mt-6">
               <p className="text-textColor-secondary text-base md:text-lg">
                 At Thrive Physios, we believe in a holistic approach to physical wellbeing.
                 Our team combines extensive knowledge with personalized treatment plans 
@@ -129,7 +130,7 @@ const About = () => {
                 the care you need in the setting that works best for you.
               </p>
             </div>
-            <div className="pt-4">
+            <div className="pt-6">
               <Button
                 className="w-full sm:w-auto button-primary"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -140,8 +141,8 @@ const About = () => {
           </div>
           
           <div className="relative hidden lg:block">
-            <div className="absolute w-64 h-64 rounded-full bg-accent/20 -z-10 -right-10 -top-10 animate-pulse"></div>
-            <div className="absolute w-32 h-32 rounded-full bg-primary/50 -z-10 left-10 bottom-10 animate-pulse delay-300"></div>
+            <div className="absolute w-64 h-64 rounded-full bg-accent/10 -z-10 -right-10 -top-10"></div>
+            <div className="absolute w-32 h-32 rounded-full bg-accent/5 -z-10 left-10 bottom-10"></div>
             <img
               src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000"
               alt="Physiotherapy Session"
@@ -164,25 +165,25 @@ const About = () => {
             {teamMembers.map((member) => (
               <div 
                 key={member.id} 
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/30 to-secondary/30 p-6 hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative z-10 p-6">
                   <div className="mb-6 relative">
-                    <div className="absolute inset-0 bg-accent/20 rounded-full transform scale-0 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-accent/5 rounded-full transform scale-0 group-hover:scale-110 transition-transform duration-300" />
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-32 h-32 object-cover rounded-full mx-auto border-2 border-accent group-hover:border-4 transition-all duration-300"
+                      className="w-32 h-32 object-cover rounded-full mx-auto border-2 border-accent/50 group-hover:border-accent transition-colors duration-300"
                     />
                   </div>
                   <h4 className="font-poppins font-medium text-xl text-textColor mb-2">
                     {member.name}
                   </h4>
                   <p className="text-accent font-medium mb-3">{member.role}</p>
-                  <div className="h-0.5 w-12 bg-accent/50 rounded-full mx-auto mb-4" />
+                  <div className="h-0.5 w-12 bg-accent/30 rounded-full mx-auto mb-4" />
                   
-                  <div className="space-y-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="space-y-2 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     {member.specialty && (
                       <p className="text-textColor-secondary text-sm">
                         <span className="font-medium">Specialty:</span> {member.specialty}
@@ -197,7 +198,7 @@ const About = () => {
                   
                   <Button 
                     variant="outline"
-                    className="mt-4 w-full bg-white/80 hover:bg-accent hover:text-white transition-colors duration-300"
+                    className="mt-4 w-full bg-white hover:bg-accent hover:text-white transition-colors duration-300"
                   >
                     View Profile
                   </Button>
