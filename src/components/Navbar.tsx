@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -27,7 +26,7 @@ const Navbar = () => {
   const handleContactClick = () => {
     // WhatsApp link with predefined message
     window.open(
-      "https://wa.me/1234567890?text=Hi%20Thrive%20Physios,%20I%20would%20like%20to%20book%20a%20session.",
+      "https://wa.me/919664315797?text=Hi%20Thrive%20Physios,%20I%20would%20like%20to%20book%20a%20session.",
       "_blank"
     );
     setIsMenuOpen(false);

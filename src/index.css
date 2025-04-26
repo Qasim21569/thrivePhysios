@@ -66,3 +66,47 @@
 html {
   scroll-behavior: smooth;
 }
+
+.shimmer-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.fancy-credit {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  background: linear-gradient(90deg, #03CDD2, #0396FF, #2979FF, #03CDD2);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmer 5s linear infinite;
+  text-shadow: 0 1px 3px rgba(3, 205, 210, 0.15);
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 0 2px;
+  display: inline-block;
+}
+
+.fancy-credit::after {
+  content: none;
+}

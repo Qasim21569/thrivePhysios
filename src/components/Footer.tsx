@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -79,10 +78,6 @@ const Footer = () => {
           <div>
             <h3 className="font-poppins font-medium text-lg mb-4">Contact Information</h3>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <MapPin size={18} className="text-accent" />
-                <p className="text-gray-300">123 Healing Street, Wellness City, CA 90210</p>
-              </div>
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-accent" />
                 <a href="mailto:info@thrivephysios.com" className="text-gray-300 hover:text-accent transition-colors">
@@ -91,8 +86,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={18} className="text-accent" />
-                <a href="tel:+11234567890" className="text-gray-300 hover:text-accent transition-colors">
-                  +1 (123) 456-7890
+                <a href="tel:+919664315797" className="text-gray-300 hover:text-accent transition-colors">
+                  +91 96643 15797
                 </a>
               </div>
             </div>
@@ -100,9 +95,14 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-10 pt-6 text-center md:text-left">
-          <p className="text-gray-400 text-sm">
-            © 2025 Thrive Physios. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
+              © 2025 Thrive Physios. All rights reserved.
+            </p>
+            <p className="text-gray-400 text-sm mt-3 md:mt-0">
+              Designed and Developed by <span className="fancy-credit">Qasim Kharodia</span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
