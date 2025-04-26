@@ -7,29 +7,20 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 200 100% 99%;
     --foreground: 222 47% 11%;
 
-    --card: 0 0% 100%;
+    --card: 190 77% 90%;
     --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 210 40% 98%;
+    --primary: 200 100% 94%;
     --primary-foreground: 222 47% 11%;
 
-    --secondary: 210 40% 96%;
+    --secondary: 188 100% 92%;
     --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 181 100% 41%;
+    --accent-foreground: 0 0% 100%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
@@ -44,7 +35,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-lato;
+    @apply bg-gradient-to-br from-[#E0FBFC] via-white to-[#CBF1F5] text-foreground font-lato min-h-screen;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-poppins font-medium;
@@ -63,7 +54,7 @@
     @apply text-lg text-textColor-secondary mb-10 max-w-2xl;
   }
   .container-section {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm;
   }
   .button-primary {
     @apply bg-accent text-white font-medium px-6 py-3 rounded-lg transition-all hover:bg-opacity-90 hover:shadow-md;
@@ -76,3 +67,4 @@
 html {
   scroll-behavior: smooth;
 }
+
