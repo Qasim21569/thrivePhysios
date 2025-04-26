@@ -6,7 +6,7 @@ import {
   Bed, 
   Heart, 
   User, 
-  Wheelchair,
+  AccessibleIcon,
   Home 
 } from "lucide-react";
 
@@ -60,7 +60,7 @@ const Specialisation = () => {
       title: "Geriatric Care",
       description:
         "Specialized physiotherapy services for older adults focusing on mobility, balance, and quality of life.",
-      icon: <Wheelchair size={32} />,
+      icon: <AccessibleIcon size={32} />,
     },
     {
       title: "Home Physiotherapy Services",
