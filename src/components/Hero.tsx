@@ -5,34 +5,34 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="pt-24 pb-16 md:pt-32 md:pb-20 bg-gradient-to-b from-primary/60 to-white"
+      className="pt-20 md:pt-32 pb-16 md:pb-20 bg-gradient-to-b from-primary/60 to-white"
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col items-start space-y-6 md:space-y-10">
-          <div className="space-y-2 md:space-y-3 max-w-3xl">
+        <div className="flex flex-col items-center md:items-start space-y-6 md:space-y-10">
+          <div className="space-y-2 md:space-y-3 max-w-3xl text-center md:text-left">
             {/* Tagline sequence with subtle animation */}
             <div className="space-y-0 md:space-y-1">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold text-textColor opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-poppins font-bold text-textColor opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 Move Better
               </h1>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold text-textColor opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-poppins font-bold text-textColor opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
                 Feel Better
               </h1>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold text-accent opacity-0 animate-fade-in" style={{ animationDelay: "1s" }}>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-poppins font-bold text-accent opacity-0 animate-fade-in" style={{ animationDelay: "1s" }}>
                 Thrive Better
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl text-textColor-secondary max-w-xl mt-6 opacity-0 animate-fade-in" style={{ animationDelay: "1.4s" }}>
+            <p className="text-base md:text-xl text-textColor-secondary max-w-xl mt-6 opacity-0 animate-fade-in px-4 md:px-0" style={{ animationDelay: "1.4s" }}>
               Professional physiotherapy services to help you recover, 
               strengthen, and improve your quality of life.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-6 opacity-0 animate-fade-in" style={{ animationDelay: "1.8s" }}>
-              <a href="#contact" className="button-primary">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 opacity-0 animate-fade-in w-full sm:w-auto" style={{ animationDelay: "1.8s" }}>
+              <a href="#contact" className="button-primary w-full sm:w-auto text-center">
                 Book a Consultation
               </a>
-              <a href="#about" className="button-secondary">
+              <a href="#about" className="button-secondary w-full sm:w-auto text-center">
                 Learn More
               </a>
             </div>

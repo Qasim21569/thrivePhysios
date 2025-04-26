@@ -12,24 +12,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-primary/60">
+    <section id="contact" className="py-16 md:py-20 bg-primary/60">
       <div className="container-section">
-        <h2 className="section-title">Contact Us</h2>
-        <p className="section-subtitle">
+        <h2 className="section-title text-3xl md:text-4xl lg:text-5xl mb-8">Contact Us</h2>
+        <p className="section-subtitle px-4">
           Ready to start your journey to better movement and health? Our team of
           specialists is here to help you thrive.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-12">
+          <div className="space-y-8 px-4 md:px-0">
             <div>
-              <h3 className="text-2xl font-poppins font-medium text-textColor mb-6">
+              <h3 className="text-2xl md:text-2xl font-poppins font-medium text-textColor mb-6 text-center md:text-left">
                 Get in Touch
               </h3>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="text-accent bg-white p-3 rounded-full">
+                  <div className="text-accent bg-white p-3 rounded-full shrink-0">
                     <Phone size={20} />
                   </div>
                   <div>
@@ -39,17 +39,17 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="text-accent bg-white p-3 rounded-full">
+                  <div className="text-accent bg-white p-3 rounded-full shrink-0">
                     <Mail size={20} />
                   </div>
                   <div>
                     <h4 className="font-poppins font-medium text-textColor">Email</h4>
-                    <p className="text-textColor-secondary">info@thrivephysios.com</p>
+                    <p className="text-textColor-secondary break-all">info@thrivephysios.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="text-accent bg-white p-3 rounded-full">
+                  <div className="text-accent bg-white p-3 rounded-full shrink-0">
                     <MapPin size={20} />
                   </div>
                   <div>
@@ -61,7 +61,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="text-accent bg-white p-3 rounded-full">
+                  <div className="text-accent bg-white p-3 rounded-full shrink-0">
                     <MessageSquare size={20} />
                   </div>
                   <div>
@@ -75,8 +75,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-poppins font-medium text-textColor mb-6">
+          <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm mx-4 md:mx-0">
+            <h3 className="text-2xl md:text-2xl font-poppins font-medium text-textColor mb-6 text-center md:text-left">
               Book Your Appointment Today
             </h3>
             <p className="text-textColor-secondary mb-8">
