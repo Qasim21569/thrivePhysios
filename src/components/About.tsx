@@ -55,30 +55,30 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-white">
       <div className="container-section">
-        <h2 className="section-title">About Us</h2>
-        <p className="section-subtitle">
+        <h2 className="section-title text-center text-4xl md:text-5xl">About Us</h2>
+        <p className="section-subtitle text-center text-xl">
           With over 15 years of combined experience, our team of expert
           physiotherapists is dedicated to delivering exceptional results
           for all our patients.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-poppins font-medium text-textColor">
+          <div className="space-y-6 text-center md:text-left">
+            <h3 className="text-3xl font-poppins font-medium text-textColor">
               Expert Care You Can Trust
             </h3>
-            <p className="text-textColor-secondary">
+            <p className="text-textColor-secondary text-lg">
               At Thrive Physios, we believe in a holistic approach to physical wellbeing.
               Our team combines extensive knowledge with personalized treatment plans 
               to address your specific needs and goals.
             </p>
-            <p className="text-textColor-secondary">
+            <p className="text-textColor-secondary text-lg">
               We offer both clinic-based and home visit services to ensure you receive
               the care you need in the setting that works best for you. Our diverse team includes
               both male and female physiotherapists, allowing you to choose the practitioner
               you feel most comfortable with.
             </p>
-            <div className="pt-4">
+            <div className="pt-4 flex justify-center md:justify-start">
               <a href="#contact" className="button-primary">
                 Schedule a Consultation
               </a>
@@ -97,8 +97,8 @@ const About = () => {
         </div>
 
         {/* Team Section */}
-        <div className="mt-20">
-          <h3 className="text-2xl font-poppins font-medium text-textColor mb-8">
+        <div className="mt-20 text-center">
+          <h3 className="text-3xl font-poppins font-medium text-textColor mb-8">
             Meet Our Team
           </h3>
           
@@ -112,10 +112,10 @@ const About = () => {
                     alt={member.name}
                     className="w-32 h-32 object-cover rounded-full mb-4 border-2 border-accent"
                   />
-                  <h4 className="font-poppins font-medium text-lg text-textColor">
+                  <h4 className="font-poppins font-medium text-xl text-textColor">
                     {member.name}
                   </h4>
-                  <p className="text-textColor-secondary text-sm mt-1">
+                  <p className="text-textColor-secondary text-base mt-1">
                     {member.role}
                   </p>
                 </div>
@@ -133,10 +133,10 @@ const About = () => {
                     alt={member.name}
                     className="w-32 h-32 object-cover rounded-full mb-4 border-2 border-accent"
                   />
-                  <h4 className="font-poppins font-medium text-lg text-textColor">
+                  <h4 className="font-poppins font-medium text-xl text-textColor">
                     {member.name}
                   </h4>
-                  <p className="text-textColor-secondary text-sm mt-1">
+                  <p className="text-textColor-secondary text-base mt-1">
                     {member.role}
                   </p>
                 </div>
