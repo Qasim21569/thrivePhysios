@@ -19,12 +19,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu when clicking a link
+  const handleNavLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleContactClick = () => {
     // WhatsApp link with predefined message
     window.open(
       "https://wa.me/1234567890?text=Hi%20Thrive%20Physios,%20I%20would%20like%20to%20book%20a%20session.",
       "_blank"
     );
+    setIsMenuOpen(false);
   };
 
   const navLinks = [
@@ -76,7 +82,7 @@ const Navbar = () => {
           {/* Mobile Navigation Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-textColor"
+            className="md:hidden text-textColor p-2 hover:bg-primary/50 rounded-md"
             aria-label="Toggle Menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -85,24 +91,26 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden pt-5 pb-6 space-y-3 animate-fade-in">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="block font-poppins text-textColor-secondary hover:text-accent transition-colors py-2 text-base"
+          <div className="md:hidden absolute left-0 right-0 top-full bg-white shadow-lg animate-fade-in">
+            <nav className="flex flex-col py-4 px-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={handleNavLinkClick}
+                  className="font-poppins text-textColor-secondary hover:text-accent transition-colors py-3 border-b border-gray-100 text-base font-medium"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <button
+                onClick={handleContactClick}
+                className="button-primary w-full mt-4 flex justify-center"
               >
-                {link.name}
-              </a>
-            ))}
-            <button
-              onClick={handleContactClick}
-              className="button-primary w-full mt-3 flex justify-center"
-            >
-              Book Now
-            </button>
-          </nav>
+                Book Now
+              </button>
+            </nav>
+          </div>
         )}
       </div>
     </header>
