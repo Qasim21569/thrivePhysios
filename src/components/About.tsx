@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Button } from "./ui/button";
 import { Users, Award, CheckCircle } from "lucide-react";
+import { useCountAnimation } from "@/hooks/useCountAnimation";
 
 interface TeamMember {
   id: number;
@@ -14,7 +14,10 @@ interface TeamMember {
 }
 
 const About = () => {
-  // Enhanced team members data with more details
+  const happyPatientsCounter = useCountAnimation({ end: 2000 });
+  const experienceCounter = useCountAnimation({ end: 15 });
+  const successRateCounter = useCountAnimation({ end: 100 });
+
   const teamMembers: TeamMember[] = [
     {
       id: 1,
@@ -78,19 +81,34 @@ const About = () => {
 
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-16">
-          <div className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300">
+          <div 
+            ref={happyPatientsCounter.ref}
+            className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300"
+          >
             <Users className="w-12 h-12 text-accent mb-4" />
-            <h3 className="text-2xl font-bold text-textColor mb-2">2000+</h3>
+            <h3 className="text-2xl font-bold text-textColor mb-2">
+              {happyPatientsCounter.count}+
+            </h3>
             <p className="text-textColor-secondary">Happy Patients</p>
           </div>
-          <div className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300">
+          <div 
+            ref={experienceCounter.ref}
+            className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300"
+          >
             <Award className="w-12 h-12 text-accent mb-4" />
-            <h3 className="text-2xl font-bold text-textColor mb-2">15+ Years</h3>
+            <h3 className="text-2xl font-bold text-textColor mb-2">
+              {experienceCounter.count}+ Years
+            </h3>
             <p className="text-textColor-secondary">Combined Experience</p>
           </div>
-          <div className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300">
+          <div 
+            ref={successRateCounter.ref}
+            className="p-6 rounded-xl bg-primary/30 backdrop-blur-sm hover:bg-primary/40 transition-all duration-300"
+          >
             <CheckCircle className="w-12 h-12 text-accent mb-4" />
-            <h3 className="text-2xl font-bold text-textColor mb-2">100%</h3>
+            <h3 className="text-2xl font-bold text-textColor mb-2">
+              {successRateCounter.count}%
+            </h3>
             <p className="text-textColor-secondary">Success Rate</p>
           </div>
         </div>
