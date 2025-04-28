@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { 
   Activity, 
   Bandage, 
@@ -6,8 +6,40 @@ import {
   Accessibility,
   Home 
 } from "lucide-react";
-import AnimatedSection from "./ui/AnimatedSection";
-import AnimatedElement from "./ui/AnimatedElement";
+
+const FadeIn = ({ children, delay = 0, direction = "up", className = "" }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, delay * 1000);
+    
+    return () => clearTimeout(timer);
+  }, [delay]);
+  
+  const getTransform = () => {
+    if (direction === "up") return "translateY(20px)";
+    if (direction === "down") return "translateY(-20px)";
+    if (direction === "left") return "translateX(20px)";
+    if (direction === "right") return "translateX(-20px)";
+    return "translateY(0)";
+  };
+  
+  const style = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0) translateX(0)" : getTransform(),
+    transition: `opacity 0.5s ease-out, transform 0.5s ease-out`,
+    transitionDelay: `${delay}s`,
+    height: '100%'
+  };
+  
+  return (
+    <div className={className} style={style}>
+      {children}
+    </div>
+  );
+};
 
 interface SpecialisationCardProps {
   title: string;
@@ -23,16 +55,13 @@ const SpecialisationCard: React.FC<SpecialisationCardProps> = ({
   index
 }) => {
   return (
-    <AnimatedElement 
-      delay={index * 0.1} 
-      direction="up"
-    >
+    <FadeIn delay={index * 0.1} direction="up">
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition-all hover:shadow-md hover:border-accent/30 hover:translate-y-[-5px] h-full">
         <div className="text-accent mb-4">{icon}</div>
         <h3 className="text-xl font-poppins font-medium text-textColor mb-3">{title}</h3>
         <p className="text-textColor-secondary">{description}</p>
       </div>
-    </AnimatedElement>
+    </FadeIn>
   );
 };
 
@@ -76,16 +105,16 @@ const Specialisation = () => {
   const bottomRowCards = specialisations.slice(3);
 
   return (
-    <AnimatedSection id="specialisation" className="py-20 bg-primary/20" delay={0.1}>
+    <section id="specialisation" className="py-20 bg-primary/20">
       <div className="container-section">
-        <AnimatedElement direction="up" delay={0.2}>
+        <FadeIn direction="up" delay={0.2}>
           <h2 className="section-title">Our Specialisations</h2>
-        </AnimatedElement>
-        <AnimatedElement direction="up" delay={0.3}>
+        </FadeIn>
+        <FadeIn direction="up" delay={0.3}>
           <p className="section-subtitle">
             We offer a comprehensive range of physiotherapy services tailored to meet your specific needs.
           </p>
-        </AnimatedElement>
+        </FadeIn>
 
         {/* Top row cards - 3 cards in grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -114,7 +143,7 @@ const Specialisation = () => {
           ))}
         </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
 };
 

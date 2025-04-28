@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Users, Award, CheckCircle, Instagram, Linkedin } from "lucide-react";
 import { useCountAnimation } from "@/hooks/useCountAnimation";
 import { trackEvent } from "@/hooks/useGoogleAnalytics";
-import AnimatedSection from "./ui/AnimatedSection";
-import AnimatedElement from "./ui/AnimatedElement";
 
 interface TeamMember {
   id: number;
@@ -19,6 +17,40 @@ interface TeamMember {
     linkedin?: string;
   };
 }
+
+const FadeIn = ({ children, delay = 0, direction = "up", className = "" }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, delay * 1000);
+    
+    return () => clearTimeout(timer);
+  }, [delay]);
+  
+  const getTransform = () => {
+    if (direction === "up") return "translateY(20px)";
+    if (direction === "down") return "translateY(-20px)";
+    if (direction === "left") return "translateX(20px)";
+    if (direction === "right") return "translateX(-20px)";
+    return "translateY(0)";
+  };
+  
+  const style = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0) translateX(0)" : getTransform(),
+    transition: `opacity 0.5s ease-out, transform 0.5s ease-out`,
+    transitionDelay: `${delay}s`,
+    height: '100%'
+  };
+  
+  return (
+    <div className={className} style={style}>
+      {children}
+    </div>
+  );
+};
 
 const About = () => {
   const happyPatientsCounter = useCountAnimation({ end: 200 });
@@ -97,22 +129,22 @@ const About = () => {
   const femaleMembers = teamMembers.filter(member => member.gender === 'female');
 
   return (
-    <AnimatedSection id="about" className="py-16 md:py-20">
+    <section id="about" className="py-16 md:py-20">
       <div className="container-section">
-        <AnimatedElement direction="up" delay={0.1}>
+        <FadeIn direction="up" delay={0.1}>
           <h2 className="section-title">About Us</h2>
-        </AnimatedElement>
-        <AnimatedElement direction="up" delay={0.2}>
+        </FadeIn>
+        <FadeIn direction="up" delay={0.2}>
           <p className="section-subtitle">
             With over 15 years of combined experience, our team of expert
             physiotherapists is dedicated to delivering exceptional results
             for all our patients.
           </p>
-        </AnimatedElement>
+        </FadeIn>
 
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-16">
-          <AnimatedElement direction="up" delay={0.3}>
+          <FadeIn direction="up" delay={0.3}>
             <div 
               ref={happyPatientsCounter.ref}
               className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
@@ -123,9 +155,9 @@ const About = () => {
               </h3>
               <p className="text-textColor-secondary">Happy Patients</p>
             </div>
-          </AnimatedElement>
+          </FadeIn>
           
-          <AnimatedElement direction="up" delay={0.4}>
+          <FadeIn direction="up" delay={0.4}>
             <div 
               ref={experienceCounter.ref}
               className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
@@ -136,9 +168,9 @@ const About = () => {
               </h3>
               <p className="text-textColor-secondary">Combined Experience</p>
             </div>
-          </AnimatedElement>
+          </FadeIn>
           
-          <AnimatedElement direction="up" delay={0.5}>
+          <FadeIn direction="up" delay={0.5}>
             <div 
               ref={successRateCounter.ref}
               className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
@@ -149,11 +181,11 @@ const About = () => {
               </h3>
               <p className="text-textColor-secondary">Success Rate</p>
             </div>
-          </AnimatedElement>
+          </FadeIn>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <AnimatedElement direction="left" delay={0.3}>
+          <FadeIn direction="left" delay={0.3}>
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <h3 className="text-2xl md:text-3xl font-poppins font-medium text-textColor">
                 Expert Care You Can Trust
@@ -182,9 +214,9 @@ const About = () => {
                 </Button>
               </div>
             </div>
-          </AnimatedElement>
+          </FadeIn>
           
-          <AnimatedElement direction="right" delay={0.4}>
+          <FadeIn direction="right" delay={0.4}>
             <div className="relative hidden lg:block">
               <div className="absolute w-64 h-64 rounded-full bg-accent/10 -z-10 -right-10 -top-10"></div>
               <div className="absolute w-32 h-32 rounded-full bg-accent/5 -z-10 left-10 bottom-10"></div>
@@ -194,27 +226,27 @@ const About = () => {
                 className="rounded-2xl shadow-lg w-full h-[500px] object-cover transform hover:scale-[1.02] transition-transform duration-300"
               />
             </div>
-          </AnimatedElement>
+          </FadeIn>
         </div>
 
         {/* Team Section */}
         <div className="mt-20 text-center">
-          <AnimatedElement direction="up" delay={0.2}>
+          <FadeIn direction="up" delay={0.2}>
             <h3 className="text-2xl md:text-3xl font-poppins font-medium text-textColor mb-4">
               Meet Our Expert Team
             </h3>
-          </AnimatedElement>
-          <AnimatedElement direction="up" delay={0.3}>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.3}>
             <p className="text-textColor-secondary text-base md:text-lg mb-12 max-w-3xl mx-auto">
               Our team consists of highly qualified physiotherapists with specialized training 
               and years of experience in different areas of physical therapy.
             </p>
-          </AnimatedElement>
+          </FadeIn>
           
           {/* Male Physios Section */}
-          <AnimatedElement direction="up" delay={0.4}>
+          <FadeIn direction="up" delay={0.4}>
             <h4 className="text-xl font-medium text-textColor mb-6">Male Physios</h4>
-          </AnimatedElement>
+          </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {maleMembers.map((member) => (
               <div 
@@ -292,9 +324,9 @@ const About = () => {
           </div>
           
           {/* Female Physios Section */}
-          <AnimatedElement direction="up" delay={0.5}>
+          <FadeIn direction="up" delay={0.5}>
             <h4 className="text-xl font-medium text-textColor mb-6">Females</h4>
-          </AnimatedElement>
+          </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
             {femaleMembers.map((member) => (
               <div 
@@ -348,7 +380,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
 };
 

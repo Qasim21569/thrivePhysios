@@ -17,18 +17,31 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "framer-motion": path.resolve(__dirname, "node_modules/framer-motion")
     },
+    dedupe: ['framer-motion', 'react', 'react-dom']
   },
   build: {
-    rollupOptions: {
-      // Make sure these libraries are not externalized
-      external: [],
-    },
     commonjsOptions: {
       include: [/node_modules/],
+      transformMixedEsModules: true
     },
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // Skip certain warnings
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' ||
+            warning.message.includes('Use of eval')) {
+          return;
+        }
+        // Use default for everything else
+        warn(warning);
+      }
+    }
   },
   optimizeDeps: {
     include: ['framer-motion'],
+    esbuildOptions: {
+      target: 'es2020'
+    }
   },
 }));
