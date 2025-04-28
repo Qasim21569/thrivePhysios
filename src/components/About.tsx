@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Users, Award, CheckCircle, Instagram, Linkedin } from "lucide-react";
 import { useCountAnimation } from "@/hooks/useCountAnimation";
+import { trackEvent } from "@/hooks/useGoogleAnalytics";
 
 interface TeamMember {
   id: number;
@@ -157,7 +158,10 @@ const About = () => {
             <div className="pt-6">
               <Button
                 className="w-full sm:w-auto button-primary"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  trackEvent('button_click', 'consultation', 'schedule_consultation');
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Schedule a Consultation
               </Button>
