@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LayoutGrid } from "lucide-react";
 
@@ -18,8 +17,9 @@ const Hero = () => {
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-poppins font-bold text-textColor opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
                 Feel Better
               </h1>
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-poppins font-bold text-accent opacity-0 animate-fade-in" style={{ animationDelay: "1s" }}>
-                Thrive Better
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-poppins font-bold opacity-0 animate-fade-in" style={{ animationDelay: "1s" }}>
+                <span className="shimmer-text inline-flex">Thrive</span>
+                <span className="text-textColor"> Better</span>
               </h1>
             </div>
             
@@ -89,6 +89,30 @@ const Hero = () => {
           <path d="M198 2C136 86.5 169.5 165 119 241.5C68.5 318 2 334 2 398" stroke="#03CDD2" strokeWidth="3" strokeLinecap="round"/>
         </svg>
       </div>
+
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            background-position: 0% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+        .shimmer-text {
+          background: linear-gradient(90deg, 
+            #03CDD2 0%, 
+            #8EEDFF 35%, 
+            #03CDD2 60%, 
+            #37B3B8 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+          animation: shimmer 5s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };

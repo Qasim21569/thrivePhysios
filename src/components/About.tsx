@@ -11,58 +11,82 @@ interface TeamMember {
   image: string;
   specialty?: string;
   experience?: string;
+  socialLinks?: {
+    instagram?: string;
+    linkedin?: string;
+  };
 }
 
 const About = () => {
   const happyPatientsCounter = useCountAnimation({ end: 200 });
   const experienceCounter = useCountAnimation({ end: 10 });
-  const successRateCounter = useCountAnimation({ end: 100 });
+  const successRateCounter = useCountAnimation({ end: 99 });
 
   const teamMembers: TeamMember[] = [
     {
       id: 1,
       name: "PT. Saud Patel",
-      role: "Senior Physiotherapist",
+      role: "Neuro & Sports Rehab Expert",
       gender: "male",
-      image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=300&h=300",
+      image: "/saud.jpeg",
       specialty: "",
-      experience: ""
+      experience: "",
+      socialLinks: {
+        instagram: "https://www.instagram.com/_physio.sp?igsh=YnkyMWVnNmU3YnZx",
+        linkedin: "https://www.linkedin.com/in/saud-patel-0749a0339?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+      }
     },
     {
       id: 2,
       name: "PT. Hamza Tanwar",
-      role: "Sports Rehabilitation Specialist",
+      role: "Geriatric & Neuro Rehab Expert",
       gender: "male",
-      image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=300&h=300",
+      image: "/hamza.jpeg",
       specialty: "",
-      experience: ""
+      experience: "",
+      socialLinks: {
+        instagram: "https://www.instagram.com/active_therapeutic?igsh=ZWxya2V1amhvZDk0",
+        linkedin: "https://www.linkedin.com/in/hamza-tanwar-1a954b359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+      }
     },
     {
       id: 3,
       name: "PT. Usman Daduji",
-      role: "Orthopedic Physiotherapist",
+      role: "Sports & Ortho Rehab Expert",
       gender: "male",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=300&h=300",
+      image: "/usman.jpeg",
       specialty: "",
-      experience: ""
+      experience: "",
+      socialLinks: {
+        instagram: "https://www.instagram.com/usmanphysio_04?igsh=ajlucXMxdzQ3b2lu",
+        linkedin: "https://in.linkedin.com/in/usman-daduji-673547362"
+      }
     },
     {
       id: 4,
       name: "PT. Afiya Halai",
-      role: "Pediatric Specialist",
+      role: "Neuro & Geriatric Rehab Expert",
       gender: "female",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=300&h=300",
+      image: "/afiya.jpeg",
       specialty: "",
-      experience: ""
+      experience: "",
+      socialLinks: {
+        instagram: "https://instagram.com/afiya.halai",
+        linkedin: "https://linkedin.com/in/afiya-halai"
+      }
     },
     {
       id: 5,
       name: "PT. Ayesha Charolia",
-      role: "Geriatric Care Specialist",
+      role: "Ortho & Sports Rehab Expert",
       gender: "female",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=300&h=300",
+      image: "/ayesha.jpeg",
       specialty: "",
-      experience: ""
+      experience: "",
+      socialLinks: {
+        instagram: "https://instagram.com/ayesha.charolia",
+        linkedin: "https://linkedin.com/in/ayesha-charolia"
+      }
     },
   ];
 
@@ -125,8 +149,9 @@ const About = () => {
                 to address your specific needs and goals.
               </p>
               <p className="text-textColor-secondary text-base md:text-lg">
-                We offer both clinic-based and home visit services to ensure you receive
-                the care you need in the setting that works best for you.
+                We currently provide premium home visit physiotherapy services, bringing expert care directly to your doorstep. 
+                Our clinic-based services will be available soon, expanding our commitment to delivering exceptional care in the 
+                setting that works best for you.
               </p>
             </div>
             <div className="pt-6">
@@ -205,12 +230,26 @@ const About = () => {
                   
                   {/* Social Media Icons */}
                   <div className="flex justify-center space-x-4 mb-4">
-                    <a href="#" className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300">
-                      <Instagram size={18} />
-                    </a>
-                    <a href="#" className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300">
-                      <Linkedin size={18} />
-                    </a>
+                    {member.socialLinks?.instagram && (
+                      <a 
+                        href={member.socialLinks.instagram} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300"
+                      >
+                        <Instagram size={18} />
+                      </a>
+                    )}
+                    {member.socialLinks?.linkedin && (
+                      <a 
+                        href={member.socialLinks.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300"
+                      >
+                        <Linkedin size={18} />
+                      </a>
+                    )}
                   </div>
                   
                   <Button 
@@ -269,12 +308,26 @@ const About = () => {
                   
                   {/* Social Media Icons */}
                   <div className="flex justify-center space-x-4 mb-4">
-                    <a href="#" className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300">
-                      <Instagram size={18} />
-                    </a>
-                    <a href="#" className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300">
-                      <Linkedin size={18} />
-                    </a>
+                    {member.socialLinks?.instagram && (
+                      <a 
+                        href={member.socialLinks.instagram} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300"
+                      >
+                        <Instagram size={18} />
+                      </a>
+                    )}
+                    {member.socialLinks?.linkedin && (
+                      <a 
+                        href={member.socialLinks.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300"
+                      >
+                        <Linkedin size={18} />
+                      </a>
+                    )}
                   </div>
                   
                   <Button 

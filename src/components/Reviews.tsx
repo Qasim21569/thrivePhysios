@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Review {
@@ -7,57 +6,177 @@ interface Review {
   name: string;
   image: string;
   testimonial: string;
+  condition: string;
   rating: number;
+  gender: 'male' | 'female';
 }
 
 const Reviews = () => {
+  const standardImages = {
+    male: "/male-client-placeholder.jpg",
+    female: "/female-client-placeholder.png"
+  };
+
   const reviews: Review[] = [
     {
       id: 1,
-      name: "Sarah M.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150&h=150",
+      name: "Hanif Halai",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Brain Stroke",
       testimonial:
-        "The team at Thrive Physios completely transformed my recovery after knee surgery. Their personalized approach and expertise helped me return to running faster than I expected.",
+        "After my brain stroke, I was worried about my recovery journey. The team at Thrive Physios provided exceptional care that helped me regain mobility and confidence faster than I thought possible.",
       rating: 5,
     },
     {
       id: 2,
-      name: "James L.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
+      name: "Ahsan Shaikh",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Hemiplegia",
       testimonial:
-        "After struggling with chronic back pain for years, Dr. Wilson developed a treatment plan that finally provided lasting relief. I'm now able to enjoy activities I had given up on.",
+        "Living with hemiplegia presented many challenges, but the personalized treatment plan from Thrive Physios has significantly improved my quality of life. Their expertise and dedication are truly remarkable.",
       rating: 5,
     },
     {
       id: 3,
-      name: "Emma T.",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
+      name: "Nadeem Deraiya",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Vertigo",
       testimonial:
-        "The home physiotherapy service was perfect for my elderly mother who couldn't travel easily. Professional, compassionate, and effective care right in our home.",
+        "The vertigo episodes were debilitating until I found Thrive Physios. Their specialized treatment approach has reduced my symptoms dramatically. I can now enjoy daily activities without constant fear of dizziness.",
       rating: 5,
     },
     {
       id: 4,
-      name: "Michael R.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
+      name: "Anas Lari",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Frozen Shoulder",
       testimonial:
-        "As a professional athlete, I need specialized care for injuries. The sports rehabilitation program at Thrive Physios is exceptional and has kept me performing at my best.",
+        "My frozen shoulder was limiting my work and lifestyle. Thanks to the targeted therapy at Thrive Physios, I've regained almost full range of motion. Their expertise made all the difference in my recovery.",
+      rating: 5,
+    },
+    {
+      id: 5,
+      name: "Shaheen Gandhi",
+      gender: "female",
+      image: standardImages.female,
+      condition: "Plantar fasciitis",
+      testimonial:
+        "The pain from plantar fasciitis made even simple walking painful. The physiotherapists at Thrive developed a comprehensive treatment plan that addressed both my symptoms and the root cause. I'm finally pain-free!",
+      rating: 5,
+    },
+    {
+      id: 6,
+      name: "Rehana Khandwani",
+      gender: "female",
+      image: standardImages.female,
+      condition: "Osteoarthritis (knee)",
+      testimonial:
+        "Managing knee osteoarthritis seemed impossible until I started treatment at Thrive Physios. Their holistic approach combining therapy, exercises, and lifestyle modifications has significantly reduced my pain and improved mobility.",
+      rating: 5,
+    },
+    {
+      id: 7,
+      name: "Rizwan Kapadia",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Ankle Sprain",
+      testimonial:
+        "After a severe ankle sprain, I was concerned about returning to sports. The rehabilitation program at Thrive Physios was exceptional, focusing not just on healing but also on preventing future injuries. I'm back to playing with confidence!",
+      rating: 5,
+    },
+    {
+      id: 8,
+      name: "Owaish Nandoliya",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Achilles Tendonapathy",
+      testimonial:
+        "My Achilles tendonapathy was affecting my ability to walk comfortably. The team at Thrive Physios created a progressive treatment plan that gradually restored my tendon health. Their expertise and patience were crucial to my recovery.",
+      rating: 5,
+    },
+    {
+      id: 9,
+      name: "Salim Khandwani",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Cervical Spondylitis",
+      testimonial:
+        "The chronic neck pain from cervical spondylitis was affecting my work and sleep. The physiotherapists at Thrive created an effective treatment regimen that has significantly reduced my pain and improved my neck mobility.",
+      rating: 5,
+    },
+    {
+      id: 10,
+      name: "Abdul Sattar Qureshi",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Sciatic Pain",
+      testimonial:
+        "The sciatic pain was unbearable, affecting every aspect of my life. Thrive Physios' approach was comprehensive and effective. Their treatment not only addressed my immediate pain but also provided strategies to prevent recurrence.",
+      rating: 5,
+    },
+    {
+      id: 11,
+      name: "Shakil Kapoor",
+      gender: "male",
+      image: standardImages.male,
+      condition: "Varicose veins",
+      testimonial:
+        "Living with varicose veins was both painful and uncomfortable. The specialized therapy approach at Thrive Physios has helped manage my symptoms and improve circulation. Their knowledgeable team made me feel supported throughout my treatment.",
+      rating: 5,
+    },
+    {
+      id: 12,
+      name: "Tahir Ansari",
+      gender: "male",
+      image: standardImages.male,
+      condition: "ACL (POST O.P)",
+      testimonial:
+        "Following my ACL surgery, I was anxious about recovery. The post-operative rehabilitation at Thrive Physios was excellent. Their structured program helped me safely rebuild strength and return to my pre-injury activities.",
       rating: 5,
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (isAutoScrolling) {
+      autoScrollIntervalRef.current = setInterval(() => {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % reviews.length);
+      }, 3000);
+    }
+    
+    return () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
+    };
+  }, [isAutoScrolling, reviews.length]);
 
   const nextSlide = () => {
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+    }
     setCurrentIndex((prevIndex) =>
       prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
     );
+    setIsAutoScrolling(false);
   };
 
   const prevSlide = () => {
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+    }
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? reviews.length - 1 : prevIndex - 1
     );
+    setIsAutoScrolling(false);
   };
 
   // For desktop, display 3 cards at a time
@@ -70,14 +189,17 @@ const Reviews = () => {
   return (
     <section id="reviews" className="py-20 bg-white">
       <div className="container-section">
-        <h2 className="section-title">Client Reviews</h2>
+        <h2 className="section-title">Client Success Stories</h2>
         <p className="section-subtitle">
-          Don't just take our word for it. Here's what our clients have to say
-          about their experience with Thrive Physios.
+          Real patients, real results. Discover how our personalized physiotherapy has transformed lives.
         </p>
 
         {/* Mobile Slider (one card at a time) */}
-        <div className="relative md:hidden">
+        <div 
+          className="relative md:hidden"
+          onMouseEnter={() => setIsAutoScrolling(false)}
+          onMouseLeave={() => setIsAutoScrolling(true)}
+        >
           <div className="overflow-hidden">
             <div className="flex transition-transform duration-300 ease-in-out">
               <div className="w-full flex-shrink-0 p-2">
@@ -93,7 +215,10 @@ const Reviews = () => {
                         <Star key={i} fill="#03CDD2" color="#03CDD2" size={16} />
                       ))}
                     </div>
-                    <p className="text-textColor-secondary text-center mb-4">
+                    <h4 className="font-poppins font-medium text-accent">
+                      {reviews[currentIndex].condition}
+                    </h4>
+                    <p className="text-textColor-secondary text-center my-4">
                       "{reviews[currentIndex].testimonial}"
                     </p>
                     <h4 className="font-poppins font-medium text-textColor">
@@ -121,7 +246,11 @@ const Reviews = () => {
         </div>
 
         {/* Desktop Display (three cards at a time) */}
-        <div className="hidden md:block">
+        <div 
+          className="hidden md:block"
+          onMouseEnter={() => setIsAutoScrolling(false)}
+          onMouseLeave={() => setIsAutoScrolling(true)}
+        >
           <div className="relative">
             <div className="grid grid-cols-3 gap-6 mt-12">
               {visibleReviews.map((review) => (
@@ -140,7 +269,10 @@ const Reviews = () => {
                         <Star key={i} fill="#03CDD2" color="#03CDD2" size={16} />
                       ))}
                     </div>
-                    <p className="text-textColor-secondary text-center mb-4">
+                    <h4 className="font-poppins font-medium text-accent">
+                      {review.condition}
+                    </h4>
+                    <p className="text-textColor-secondary text-center my-4">
                       "{review.testimonial}"
                     </p>
                     <h4 className="font-poppins font-medium text-textColor">

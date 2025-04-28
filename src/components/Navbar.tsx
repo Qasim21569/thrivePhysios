@@ -52,9 +52,24 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#" className="flex items-center">
-              <span className="font-poppins text-textColor font-bold text-xl md:text-2xl">
-                Thrive <span className="text-accent">Physios</span>
+            <a href="#" className="flex items-center gap-1">
+              <img 
+                src="/logov1.png" 
+                alt="Thrive Physios Logo" 
+                className="h-10 md:h-12 w-auto object-contain mr-1"
+              />
+              <span className="font-poppins text-textColor font-bold">
+                {/* Small Size */}
+                {/* <span className="navbar-shimmer-text text-xl md:text-2xl">Thrive</span> <span className="text-textColor text-xl md:text-2xl">Physios</span> */}
+                
+                {/* Medium Size (Current) */}
+                <span className="navbar-shimmer-text text-2xl md:text-3xl">Thrive</span> <span className="text-textColor text-2xl md:text-3xl">Physios</span>
+                
+                {/* Large Size */}
+                {/* <span className="navbar-shimmer-text text-3xl md:text-4xl">Thrive</span> <span className="text-textColor text-3xl md:text-4xl">Physios</span> */}
+                
+                {/* Extra Large Size */}
+                {/* <span className="navbar-shimmer-text text-4xl md:text-5xl">Thrive</span> <span className="text-textColor text-4xl md:text-5xl">Physios</span> */}
               </span>
             </a>
           </div>
@@ -112,6 +127,29 @@ const Navbar = () => {
           </div>
         )}
       </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+          }
+          .navbar-shimmer-text {
+            background: linear-gradient(90deg, 
+              #03CDD2 0%, 
+              #8EEDFF 35%, 
+              #03CDD2 60%, 
+              #37B3B8 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            animation: shimmer 5s ease-in-out infinite;
+          }
+        `
+      }} />
     </header>
   );
 };
