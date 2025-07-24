@@ -60,7 +60,7 @@ const About = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "PT. Saud Patel",
+      name: "PT. Saud Patel", 
       role: "Neuro & Sports Rehab Expert",
       gender: "male",
       image: "/saud.jpeg",
@@ -71,32 +71,32 @@ const About = () => {
         linkedin: "https://www.linkedin.com/in/saud-patel-0749a0339?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
       }
     },
-    {
-      id: 2,
-      name: "PT. Hamza Tanwar",
-      role: "Geriatric & Neuro Rehab Expert",
-      gender: "male",
-      image: "/hamza.jpeg",
-      specialty: "",
-      experience: "",
-      socialLinks: {
-        instagram: "https://www.instagram.com/active_therapeutic?igsh=ZWxya2V1amhvZDk0",
-        linkedin: "https://www.linkedin.com/in/hamza-tanwar-1a954b359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-      }
-    },
-    {
-      id: 3,
-      name: "PT. Usman Daduji",
-      role: "Sports & Ortho Rehab Expert",
-      gender: "male",
-      image: "/usman.jpeg",
-      specialty: "",
-      experience: "",
-      socialLinks: {
-        instagram: "https://www.instagram.com/usmanphysio_04?igsh=ajlucXMxdzQ3b2lu",
-        linkedin: "https://in.linkedin.com/in/usman-daduji-673547362"
-      }
-    },
+    // {
+    //   id: 2,
+    //   name: "PT. Hamza Tanwar",
+    //   role: "Geriatric & Neuro Rehab Expert",
+    //   gender: "male",
+    //   image: "/hamza.jpeg",
+    //   specialty: "",
+    //   experience: "",
+    //   socialLinks: {
+    //     instagram: "https://www.instagram.com/active_therapeutic?igsh=ZWxya2V1amhvZDk0",
+    //     linkedin: "https://www.linkedin.com/in/hamza-tanwar-1a954b359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    //   }
+    // },
+    // {
+    //   id: 3,
+    //   name: "PT. Usman Daduji",
+    //   role: "Sports & Ortho Rehab Expert",
+    //   gender: "male",
+    //   image: "/usman.jpeg",
+    //   specialty: "",
+    //   experience: "",
+    //   socialLinks: {
+    //     instagram: "https://www.instagram.com/usmanphysio_04?igsh=ajlucXMxdzQ3b2lu",
+    //     linkedin: "https://in.linkedin.com/in/usman-daduji-673547362"
+    //   }
+    // },
     {
       id: 4,
       name: "PT. Afiya Halai",
@@ -110,19 +110,19 @@ const About = () => {
         linkedin: "https://linkedin.com/in/afiya-halai"
       }
     },
-    {
-      id: 5,
-      name: "PT. Ayesha Charolia",
-      role: "Ortho & Sports Rehab Expert",
-      gender: "female",
-      image: "/ayesha.jpeg",
-      specialty: "",
-      experience: "",
-      socialLinks: {
-        instagram: "https://instagram.com/ayesha.charolia",
-        linkedin: "https://linkedin.com/in/ayesha-charolia"
-      }
-    },
+    // {
+    //   id: 5,
+    //   name: "PT. Ayesha Charolia",
+    //   role: "Ortho & Sports Rehab Expert",
+    //   gender: "female",
+    //   image: "/ayesha.jpeg",
+    //   specialty: "",
+    //   experience: "",
+    //   socialLinks: {
+    //     instagram: "https://instagram.com/ayesha.charolia",
+    //     linkedin: "https://linkedin.com/in/ayesha-charolia"
+    //   }
+    // },
   ];
 
   const maleMembers = teamMembers.filter(member => member.gender === 'male');
@@ -247,16 +247,20 @@ const About = () => {
           <FadeIn direction="up" delay={0.4}>
             <h4 className="text-xl font-medium text-textColor mb-6">Male Physios</h4>
           </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {/* ✅ FIX: Conditional classes for centering */}
+          <div 
+            className={
+              maleMembers.length > 1 
+                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+                : "flex justify-center mb-12"
+            }
+          >
             {maleMembers.map((member) => (
               <div 
                 key={member.id} 
-                className="group relative rounded-2xl bg-white shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1"
+                className="group relative rounded-2xl bg-white shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1 w-full max-w-sm" // Added max-width
               >
-                {/* Card background effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Top border effect */}
                 <div className="absolute top-0 left-0 w-0 h-1 bg-accent group-hover:w-full transition-all duration-700 ease-in-out"></div>
                 
                 <div className="relative p-6">
@@ -288,7 +292,6 @@ const About = () => {
                     )}
                   </div>
                   
-                  {/* Social Media Icons */}
                   <div className="flex justify-center space-x-4 mb-4">
                     {member.socialLinks?.instagram && (
                       <a 
@@ -325,18 +328,22 @@ const About = () => {
           
           {/* Female Physios Section */}
           <FadeIn direction="up" delay={0.5}>
-            <h4 className="text-xl font-medium text-textColor mb-6">Females</h4>
+            <h4 className="text-xl font-medium text-textColor mb-6">Female Physios</h4>
           </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
+          {/* ✅ FIX: Conditional classes for centering */}
+          <div 
+            className={
+              femaleMembers.length > 1
+                ? "grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto"
+                : "flex justify-center mb-12 max-w-3xl mx-auto"
+            }
+          >
             {femaleMembers.map((member) => (
               <div 
                 key={member.id} 
-                className="group relative rounded-2xl bg-white shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1"
+                className="group relative rounded-2xl bg-white shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1 w-full max-w-sm" // Added max-width
               >
-                {/* Card background effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Top border effect */}
                 <div className="absolute top-0 left-0 w-0 h-1 bg-accent group-hover:w-full transition-all duration-700 ease-in-out"></div>
                 
                 <div className="relative p-6">
@@ -365,6 +372,30 @@ const About = () => {
                       <p className="text-textColor-secondary text-sm">
                         <span className="font-medium">Experience:</span> {member.experience}
                       </p>
+                    )}
+                  </div>
+
+                  {/* ✅ FIX: Added missing social links */}
+                  <div className="flex justify-center space-x-4 mb-4">
+                    {member.socialLinks?.instagram && (
+                      <a 
+                        href={member.socialLinks.instagram} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300"
+                      >
+                        <Instagram size={18} />
+                      </a>
+                    )}
+                    {member.socialLinks?.linkedin && (
+                      <a 
+                        href={member.socialLinks.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white text-accent border border-accent/30 hover:bg-accent hover:text-white transition-colors duration-300"
+                      >
+                        <Linkedin size={18} />
+                      </a>
                     )}
                   </div>
                   
