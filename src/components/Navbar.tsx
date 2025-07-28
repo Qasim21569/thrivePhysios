@@ -47,7 +47,9 @@ const Navbar = () => {
           ? "bg-white/90 backdrop-blur-md shadow-sm py-3"
           : "bg-transparent py-5"
       }`}
-      style={{ top: isScrolled ? '0' : '120px' }}
+      style={{ 
+        top: isScrolled ? '0' : window.innerWidth < 768 ? '70px' : '120px' 
+      }}
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">

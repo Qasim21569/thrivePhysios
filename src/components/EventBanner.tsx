@@ -49,9 +49,80 @@ const EventBanner = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-accent via-accent to-[#02B8BD] shadow-lg">
-      <div className="container max-w-7xl mx-auto px-4 py-3">
-        {/* Main Banner Content */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div className="container max-w-7xl mx-auto px-3 py-2">
+        {/* Mobile Layout */}
+        <div className="block md:hidden">
+          {/* Top Row - Brand & Event Title */}
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <img 
+              src="/logov1.png" 
+              alt="Thrive Physios Logo" 
+              className="h-6 w-auto object-contain"
+            />
+            <div className="font-poppins font-bold">
+              <span className="text-accent bg-white px-1 rounded text-sm">Thrive</span>
+              <span className="text-white text-sm"> Physios</span>
+            </div>
+            <div className="flex items-center gap-1 text-white">
+              <Calendar size={14} />
+              <span className="font-bold text-sm">FREE Physio Camp</span>
+            </div>
+          </div>
+
+          {/* Middle Row - Event Details */}
+          <div className="text-center text-white text-xs mb-2">
+            <div className="flex items-center justify-center gap-1 mb-1">
+              <Clock size={12} />
+              <span>Aug 10, 2025 | 10 AM - 5 PM</span>
+            </div>
+            <div className="flex items-center justify-center gap-1">
+              <MapPin size={12} />
+              <span>Madni High School, Jogeshwari West</span>
+            </div>
+          </div>
+
+          {/* Bottom Row - Countdown & Buttons */}
+          <div className="flex items-center justify-between gap-2">
+            {/* Countdown */}
+            <div className="flex items-center gap-1">
+              <span className="text-white text-xs">Starts In:</span>
+              <div className="flex gap-1">
+                {[
+                  { label: "D", value: timeLeft.days },
+                  { label: "H", value: timeLeft.hours },
+                  { label: "M", value: timeLeft.minutes },
+                  { label: "S", value: timeLeft.seconds },
+                ].map((item, index) => (
+                  <div key={index} className="bg-white/20 backdrop-blur-sm rounded px-1 py-1 text-center min-w-[25px]">
+                    <div className="text-white font-bold text-xs leading-none">{item.value.toString().padStart(2, '0')}</div>
+                    <div className="text-yellow-200 text-xs leading-none">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex gap-1">
+              <button
+                onClick={handleRegistration}
+                className="bg-white text-accent font-poppins font-semibold px-3 py-1 rounded text-xs flex items-center gap-1"
+              >
+                <CheckCircle size={12} />
+                Register
+              </button>
+              <button
+                onClick={handleMoreDetails}
+                className="bg-transparent border border-white text-white font-poppins font-semibold px-3 py-1 rounded text-xs flex items-center gap-1"
+              >
+                <Info size={12} />
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-4">
           {/* Left Section - Brand & Event Info */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-white">
             {/* Logo and Brand */}
@@ -132,8 +203,8 @@ const EventBanner = () => {
           </div>
         </div>
 
-        {/* Bottom Info Bar */}
-        <div className="mt-2 pt-2 border-t border-white/20">
+        {/* Bottom Info Bar - Desktop Only */}
+        <div className="hidden md:block mt-2 pt-2 border-t border-white/20">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-white text-xs">
             {/* Left - Benefits */}
             <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2">
