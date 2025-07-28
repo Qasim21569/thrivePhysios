@@ -154,10 +154,10 @@ const EventBanner = () => {
             </div>
             
             {/* Right - Contact */}
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <Phone size={14} />
               <span className="font-medium">Call: +91 8369890513</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
