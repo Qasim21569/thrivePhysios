@@ -70,6 +70,83 @@ html {
 .shimmer-text {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(90deg, 
+    #03CDD2 0%, 
+    #8EEDFF 35%, 
+    #03CDD2 60%, 
+    #37B3B8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.navbar-shimmer-text {
+  background: linear-gradient(90deg, 
+    #03CDD2 0%, 
+    #8EEDFF 35%, 
+    #03CDD2 60%, 
+    #37B3B8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.footer-shimmer-text {
+  background: linear-gradient(90deg, 
+    #03CDD2 0%, 
+    #8EEDFF 35%, 
+    #03CDD2 60%, 
+    #37B3B8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Event Banner Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(3, 205, 210, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(3, 205, 210, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .shimmer-effect {

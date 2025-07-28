@@ -39,7 +39,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="pt-20 md:pt-32 pb-16 md:pb-20 bg-gradient-to-b from-primary/60 to-white"
+      className="pt-48 md:pt-52 pb-16 md:pb-20 bg-gradient-to-b from-primary/60 to-white"
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -142,29 +142,7 @@ const Hero = () => {
         </svg>
       </div>
 
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            background-position: 0% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-        .shimmer-text {
-          background: linear-gradient(90deg, 
-            #03CDD2 0%, 
-            #8EEDFF 35%, 
-            #03CDD2 60%, 
-            #37B3B8 100%);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          color: transparent;
-          animation: shimmer 5s ease-in-out infinite;
-        }
-      `}</style>
+
     </section>
   );
 };
